@@ -20,7 +20,7 @@ fastify.register(userController, { prefix: '/users' });
 fastify.register(todosController, { prefix: '/todos' });
 const start = async () => {
   try {
-    const PORT = parseInt(process.env.PORT || '3000', 10);
+    const PORT = parseInt(process.env.PORT || '3002', 10);
     await fastify.listen({ port: PORT, host: '0.0.0.0' });
 
     const address = fastify.server.address();
