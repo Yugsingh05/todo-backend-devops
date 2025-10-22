@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 import fastifyCors from '@fastify/cors';
 import 'dotenv/config';
+import { userController } from './src/users/http/user.http';
 
 const fastify = Fastify({ logger: true });
 
@@ -13,6 +14,8 @@ fastify.register(fastifyCors, {
 fastify.get('/', async (request, reply) => {
   return { hello: 'world 2' };
 });
+
+fastify.register(userController, { prefix: '/users' });
 
 const start = async () => {
   try {
