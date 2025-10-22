@@ -2,6 +2,7 @@ import Fastify from 'fastify';
 import fastifyCors from '@fastify/cors';
 import 'dotenv/config';
 import { userController } from './src/users/http/user.http';
+import { todosController } from './src/todos/http/todos.http';
 
 const fastify = Fastify({ logger: true });
 
@@ -16,7 +17,7 @@ fastify.get('/', async (request, reply) => {
 });
 
 fastify.register(userController, { prefix: '/users' });
-
+fastify.register(todosController, { prefix: '/todos' });
 const start = async () => {
   try {
     const PORT = parseInt(process.env.PORT || '3000', 10);
