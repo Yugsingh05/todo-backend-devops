@@ -13,7 +13,7 @@ fastify.register(fastifyCors, {
 });
 
 fastify.get('/', async (request, reply) => {
-  return { hello: 'world 2' };
+  return { hello: 'world 3' };
 });
 
 fastify.register(userController, { prefix: '/users' });
