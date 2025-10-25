@@ -1,0 +1,25 @@
+name: Backend CI/CD
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Deploy to server
+              uses: appleboy/ssh-action@v0.1.5
+              with:
+                  host: ${{ secrets.SERVER_HOST }}
+                  username: root
+                  key: ${{ secrets.SERVER_SSH_KEY }}
+                  script: |
+                      cd /root/todo-backend-devops
+                      git pull origin main
+                      docker-compose up -d --build
