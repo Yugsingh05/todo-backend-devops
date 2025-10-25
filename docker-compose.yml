@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-  # Backend Service
   backend:
     build:
       context: .
       dockerfile: dockerfile
+    image: todo-backend-devops-backend:latest
     container_name: todo-backend
     env_file:
       - .env
@@ -14,6 +14,7 @@ services:
     networks:
       - todo-network
     restart: unless-stopped
+
 networks:
   todo-network:
     driver: bridge
